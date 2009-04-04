@@ -100,9 +100,9 @@
                    `(,(concat dir "/") ,file ,(rspec-current-it-block))))
 
 (defun rspec-type (filename)
-  (progn
-    (string-match "spec/\\(unit\\|functional\\)/" filename)
-    (match-string 1 filename)))
+  (if (string-match "spec/\\(unit\\|functional\\)/" filename)
+      (match-string 1 filename)
+    "console"))
 
 (defun rspec-current-it-block ()
   (if (re-search-backward "^ +it +\\(['\"]\\)\\(.*?\\)\\1" nil t)
