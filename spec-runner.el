@@ -29,6 +29,7 @@
 (defun rspec-run-drb (with-example-p)
   "run file or example in an emacs buffer"
   (save-excursion
+    (save-some-buffers t)
     (let ((rspec-buffer (get-buffer-create "*rspec*")))
       (display-buffer rspec-buffer)
       (save-window-excursion
@@ -50,6 +51,7 @@
    If with-example-p is non-nil it will
    run only the previous 'it' block"
   (save-excursion
+    (save-some-buffers t)
     (let* ((file-info (rspec-get-file-info))
            (type (rspec-type (second file-info)))
            (buffer-name (concat "*rspec " type "*"))
